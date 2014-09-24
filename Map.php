@@ -20,7 +20,7 @@ var geocoder, map;
 function initialize() {
   geocoder = new google.maps.Geocoder();
     geocoder.geocode({
-        "address": address
+        "address": "' . $this->address . '"
     }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var myOptions = {
