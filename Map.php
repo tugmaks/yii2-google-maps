@@ -2,7 +2,7 @@
 
 namespace tugmaks\GoogleMaps;
 
-class Map extends \yii\base\widget
+class Map extends \yii\base\Widget
 {
     public function run()
     {
