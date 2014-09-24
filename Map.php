@@ -3,7 +3,6 @@
 namespace tugmaks\GoogleMaps;
 
 use Yii;
-use tugmaks\GoogleMaps\assets\FontAwesomeAsset;
 
 class Map extends \yii\base\Widget {
 
@@ -13,13 +12,12 @@ class Map extends \yii\base\Widget {
         $api_key = Yii::$app->params['GOOGLE_API_KEY'];
         $sensor = $this->sensor ? 'true' : 'false';
         $this->view->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $sensor);
-        FontAwesomeAsset::register($this->view);
         parent::init();
     }
 
     public function run() {
 
-        return "Hello!!!";
+        return $this->render('map');
     }
 
 }
