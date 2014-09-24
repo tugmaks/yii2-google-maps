@@ -35,6 +35,7 @@ geocoder = new google.maps.Geocoder();
         });
       }
     });
+    }
 function loadScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
