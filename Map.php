@@ -10,6 +10,7 @@ class Map extends \yii\base\Widget {
     public $width = 600;
     public $height = 600;
     public $address = 'г. Казань, ул. Г. Камала, д.41';
+    public $zoom=4;
 
     public function init() {
         $api_key = Yii::$app->params['GOOGLE_API_KEY'];
@@ -24,7 +25,7 @@ function initialize() {
     }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var myOptions = {
-                zoom: 8,
+                zoom: '.$this->zoom.',
                 center: results[0].geometry.location,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
