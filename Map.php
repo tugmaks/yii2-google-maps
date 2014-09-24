@@ -22,7 +22,7 @@ class Map extends \yii\base\Widget {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  codeAdress("' . $this->address . '");
+  codeAddress("' . $this->address . '");
 }
 function codeAddress(address) {
 geocoder = new google.maps.Geocoder();
