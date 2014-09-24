@@ -11,7 +11,8 @@ class Map extends \yii\base\Widget {
 
     public function init() {
         $api_key = Yii::$app->params['GOOGLE_KEY_API'];
-        $this->view->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $this->sensor);
+        $sensor = $this->sensor ? 'true' : 'false';
+        $this->view->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $sensor);
         FontAwesomeAsset::register($this->view);
         parent::init();
     }
