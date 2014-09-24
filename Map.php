@@ -28,7 +28,7 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-window.onload = loadScript;');
+window.onload = loadScript;', \yii\web\View::POS_END);
         parent::init();
     }
 
