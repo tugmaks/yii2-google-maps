@@ -7,6 +7,9 @@ use Yii;
 class Map extends \yii\base\Widget {
 
     public $sensor = false;
+    public $width = 600;
+    public $height = 600;
+    public $address = 'г. Казань, ул. Г. Камала, д.41';
 
     public function init() {
         $api_key = Yii::$app->params['GOOGLE_API_KEY'];
@@ -19,8 +22,19 @@ class Map extends \yii\base\Widget {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  codeAdress("' . $this->address . '");
 }
-
+function codeAddress(address) {
+geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { "address": address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      }
+    });
 function loadScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
