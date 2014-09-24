@@ -2,6 +2,7 @@
 
 namespace tugmaks\GoogleMaps;
 
+use Yii;
 use tugmaks\GoogleMaps\assets\FontAwesomeAsset;
 
 class Map extends \yii\base\Widget {
