@@ -6,11 +6,17 @@ use Yii;
 
 class Map extends \yii\base\Widget {
 
+    const MAP_TYPE_ROADMAP = 'ROADMAP';
+    const MAP_TYPE_HYBRID = 'HYBRID';
+    const MAP_TYPE_SATELLITE = 'SATELLITE';
+    const MAP_TYPE_TERRAIN = 'TERRAIN';
+
     public $sensor = false;
     public $width = 600;
     public $height = 600;
     public $address = 'г. Москва, ул. Г. Королёва, д.12';
-    public $zoom=4;
+    public $zoom = 4;
+    public $mapType = 'ROADMAP';
 
     public function init() {
         $api_key = Yii::$app->params['GOOGLE_API_KEY'];
@@ -25,9 +31,9 @@ function initialize() {
     }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var myOptions = {
-                zoom: '.$this->zoom.',
+                zoom: ' . $this->zoom . ',
                 center: results[0].geometry.location,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.' . $this->mapType . '
             }
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
