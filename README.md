@@ -28,4 +28,12 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \tugmaks\GoogleMaps\Map::widget(); ?>```
+use tugmaks\GoogleMaps\Map;
+
+echo Map::widget([
+    'zoom' => 16,
+    'address' => 'Red Square',
+    'width' => 700,
+    'height' => 400,
+    'mapType' => Map::MAP_TYPE_SATELLITE,
+]);; ?>```
