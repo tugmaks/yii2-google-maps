@@ -25,6 +25,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 [Google Maps JavaScript API v3](https://developers.google.com/maps/documentation/javascript/reference)
+
 Once the extension is installed, simply use it in your code by  :
 
 ```php
