@@ -15,7 +15,7 @@
             mapOptions['center'] = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
             geocoder.geocode({
-                "address": "<?= $this->context->center ?>"
+                "address": "Red Square"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     mapOptions['center'] = results[0].geometry.location;
