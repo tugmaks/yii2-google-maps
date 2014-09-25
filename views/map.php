@@ -11,7 +11,7 @@
             mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>
         }
 <?php if (is_array($this->context->center)): ?>
-            mapOptions.center = [<?= $this->context->center[0] ?>, $this - > context - > center[1]];
+            mapOptions.center = [<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>];
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
@@ -28,10 +28,10 @@
 
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
+//        var marker = new google.maps.Marker({
+//            map: map,
+//            position: results[0].geometry.location
+//        });
     }
     function loadScript() {
         var script = document.createElement("script");
