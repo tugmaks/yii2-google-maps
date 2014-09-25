@@ -38,6 +38,7 @@
         document.body.appendChild(script);
     }
     function setMapCenter(center) {
+        alert('set');
         window.mapCenter = center;
     }
     window.onload = loadScript;
