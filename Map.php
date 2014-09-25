@@ -14,20 +14,20 @@ class Map extends \yii\base\Widget {
     public $sensor = false;
     public $width = 600;
     public $height = 600;
-    public $address = 'г. Москва, ул. Г. Королёва, д.12';
+    public $center = 'г. Москва, ул. Г. Королёва, д.12';
     public $zoom = 4;
     public $mapType = 'ROADMAP';
+    public $markers = [];
 
     public function init() {
         $api_key = Yii::$app->params['GOOGLE_API_KEY'];
         $sensor = $this->sensor ? 'true' : 'false';
-        //$this->view->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $sensor);
         $this->view->registerJs('
 var geocoder, map;            
 function initialize() {
   geocoder = new google.maps.Geocoder();
     geocoder.geocode({
-        "address": "' . $this->address . '"
+        "address": "' . $this->center . '"
     }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var myOptions = {

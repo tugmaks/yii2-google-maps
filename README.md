@@ -24,7 +24,7 @@ to the require section of your `composer.json` file.
 
 Usage
 -----
-
+[Google Maps JavaScript API v3](https://developers.google.com/maps/documentation/javascript/reference)
 Once the extension is installed, simply use it in your code by  :
 
 ```php
@@ -32,7 +32,7 @@ use tugmaks\GoogleMaps\Map;
 
 echo Map::widget([
     'zoom' => 16,
-    'address' => 'Red Square',
+    'center' => 'Red Square',
     'width' => 700,
     'height' => 400,
     'mapType' => Map::MAP_TYPE_SATELLITE,
