@@ -25,7 +25,7 @@
 
             );
 <?php endif; ?>
-
+alert(mapOptions.center);
 
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
