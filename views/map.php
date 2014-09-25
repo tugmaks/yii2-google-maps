@@ -16,7 +16,7 @@
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
 
-                    mapCenter = results[0].geometry.location;
+                    window.mapCenter = results[0].geometry.location;
                 }
 
             }
