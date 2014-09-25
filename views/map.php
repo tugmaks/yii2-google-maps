@@ -18,8 +18,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    mapOptions['center'] = results[0].geometry.location;
-                    alert(results[0].geometry.location.lat() + ' ' + results[0].geometry.location.lng());
+                    mapOptions['center'] = new google.maps.LatLng(parseFloat(results[0].geometry.location.lat()), parseFloat(results[0].geometry.location.lng()));
                 }
 
             }
