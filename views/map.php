@@ -27,7 +27,7 @@ var mapCenter={};
                 {
                     zoom: <?= $this->context->zoom ?>,
                     mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                    center: mapCenter
+                    center: window.mapCenter
                 }
         );
 //        var marker = new google.maps.Marker({
