@@ -2,11 +2,10 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <script>
-
+var mapCenter={};
 
     function initialize() {
         var geocoder = new google.maps.Geocoder(),
-                mapCenter,
                 map;
 <?php if (is_array($this->context->center)): ?>
             mapCenter = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
