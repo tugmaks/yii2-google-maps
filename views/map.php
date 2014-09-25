@@ -17,8 +17,8 @@
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
-                alert(status+' '+google.maps.GeocoderStatus.OK);
                 if (status == google.maps.GeocoderStatus.OK) {
+                    alert('here');
                     mapOptions['center'] = results[0].geometry.location;
                 }
 
