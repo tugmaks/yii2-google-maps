@@ -12,13 +12,13 @@
             center: false
         };
 <?php if (is_array($this->context->center)): ?>
-            mapOptions.center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
+            mapOptions[center] = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    mapOptions.center = results[0].geometry.location;
+                    mapOptions[center] = results[0].geometry.location;
                 }
 
             }
