@@ -9,7 +9,7 @@
         var mapOptions = {
             zoom: <?= $this->context->zoom ?>,
             mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-            center: new google.maps.LatLng(0, 0),
+            center: ''
         };
 <?php if (is_array($this->context->center)): ?>
             mapOptions['center'] = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
@@ -18,7 +18,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    mapOptions['center'] = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                    mapOptions['center'] = new google.maps.LatLng(50, 50);
                 }
 
             }
