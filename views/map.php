@@ -14,7 +14,7 @@
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     alert(results[0].geometry.location.toString());
-                    center = results[0].geometry.location;
+                    window.center = results[0].geometry.location;
                 }
 
             }
