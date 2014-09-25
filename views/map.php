@@ -18,7 +18,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    alert('here');
+                    alert(results[0].geometry.location.toString());
                     mapOptions['center'] = results[0].geometry.location;
                 }
 
