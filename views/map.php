@@ -12,7 +12,7 @@
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
-            }, function (results, status) {
+            }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     alert(results[0].geometry.location);
                     setMapCenter(results[0].geometry.location);
@@ -21,9 +21,7 @@
             }
 
             );
-            function setMapCenter(center) {
-                window.mapCenter = center;
-            }
+
 <?php endif; ?>
         alert(mapCenter.toString());
         map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -44,7 +42,9 @@
         script.src = "https://maps.googleapis.com/maps/api/js?key=<?= $this->context->apiKey ?>&sensor=<?= $this->context->sensor ?>&callback=initialize";
         document.body.appendChild(script);
     }
-
+    function setMapCenter(center) {
+        window.mapCenter = center;
+    }
     window.onload = loadScript;
 </script>
 
