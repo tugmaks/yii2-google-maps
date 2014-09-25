@@ -3,8 +3,9 @@
 </div>
 <script>
     var geocoder, map;
-    geocoder = new google.maps.Geocoder();
+
     function initialize() {
+        geocoder = new google.maps.Geocoder();
         var mapOptions = {
             zoom: <?= $this->context->zoom ?>,
             mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>
