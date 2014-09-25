@@ -6,11 +6,6 @@
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
-        var mapOptions = {
-            zoom: <?= $this->context->zoom ?>,
-            mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-            center: {}
-        };
 <?php if (is_array($this->context->center)): ?>
             center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
