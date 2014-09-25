@@ -2,7 +2,7 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <script>
-    var mapCenter = {};
+    var mapCenter;
     function initialize() {
         var geocoder = new google.maps.Geocoder(),
                 map;
@@ -13,12 +13,12 @@
                 "address": "<?= $this->context->center ?>"
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    alert(results[0].geometry.location);
+                    alert('0status ok, set center');
                     setMapCenter(results[0].geometry.location);
                 }
             });
 <?php endif; ?>
-        alert('mapCenter.toString()');
+        alert('2. init here');
         map = new google.maps.Map(document.getElementById("map_canvas"),
                 {
                     zoom: <?= $this->context->zoom ?>,
@@ -38,7 +38,7 @@
         document.body.appendChild(script);
     }
     function setMapCenter(center) {
-        alert(center.toString());
+        alert('1. setting here');
         window.mapCenter = center;
     }
     window.onload = loadScript;
