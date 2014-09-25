@@ -18,9 +18,8 @@
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
-                alert(status);
                 if (status === google.maps.GeocoderStatus.OK) {
-                    mapOptions['center'] = results[0].geometry.location;
+                    mapOptions['center'] = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
                 } else {
                     mapOptions['center'] = new google.maps.LatLng(0, 0);
                 }
@@ -29,7 +28,6 @@
 
             );
 <?php endif; ?>
-        alert(mapOptions['center']);
 
         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
