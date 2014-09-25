@@ -3,7 +3,6 @@
 </div>
 <script>
     var mapCenter = {};
-
     function initialize() {
         var geocoder = new google.maps.Geocoder(),
                 map;
@@ -17,13 +16,9 @@
                     alert(results[0].geometry.location);
                     setMapCenter(results[0].geometry.location);
                 }
-
-            }
-
-            );
-
+            });
 <?php endif; ?>
-        alert(mapCenter.toString());
+        alert('mapCenter.toString()');
         map = new google.maps.Map(document.getElementById("map_canvas"),
                 {
                     zoom: <?= $this->context->zoom ?>,
