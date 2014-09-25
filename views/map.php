@@ -2,19 +2,19 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <script>
-    var geocoder, center, map;
+    var geocoder, map_center, map;
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
 <?php if (is_array($this->context->center)): ?>
-            center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
+            map_center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     alert(results[0].geometry.location.toString());
-                    window.center = results[0].geometry.location;
+                    window.map_center = results[0].geometry.location;
                 }
 
             }
@@ -25,7 +25,7 @@
                 {
                     zoom: <?= $this->context->zoom ?>,
                     mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                    center: center
+                    center: window.map_center
                 }
         );
 //        var marker = new google.maps.Marker({
