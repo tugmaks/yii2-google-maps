@@ -36,4 +36,5 @@ echo Map::widget([
     'width' => 700,
     'height' => 400,
     'mapType' => Map::MAP_TYPE_SATELLITE,
-]);; ?>```
+]);
+```
