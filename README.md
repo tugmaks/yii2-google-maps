@@ -42,10 +42,11 @@ echo Map::widget([
 ]);
 ```
 Parameters
-Name  | Description
-------------- | -------------
-zoom  | integer, not required, default 4
-center  | array or string. If array lat and lng will be used, if string search query will be used. For example 'center'=>[23.091,100.412] or 'center'=>'London, UK'
-width | integer, size in px of div wrapper width
-height | integer, size in px of div wrapper height
-mapType | string, one of this: MAP_TYPE_ROADMAP, MAP_TYPE_HYBRID, MAP_TYPE_SATELLITE, MAP_TYPE_TERRAIN
+
+| Name  | Description |
+| ------------- | ------------- |
+| zoom  | integer, not required, default 4 |
+| center  | array or string. If array lat and lng will be used, if string search query will be used. For example 'center'=>[23.091,100.412] or 'center'=>'London, UK' |
+| width | integer, size in px of div wrapper width |
+| height | integer, size in px of div wrapper height |
+| mapType | string, one of this: MAP_TYPE_ROADMAP, MAP_TYPE_HYBRID, MAP_TYPE_SATELLITE, MAP_TYPE_TERRAIN |
