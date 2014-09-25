@@ -3,32 +3,32 @@
 </div>
 <script>
     var geocoder,
-            mapСenter,
+            mapCenter,
             map;
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
 <?php if (is_array($this->context->center)): ?>
-            window.mapСenter = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
+            window.mapCenter = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
 
-                    window.mapСenter = results[0].geometry.location;
+                    window.mapCenter = results[0].geometry.location;
                 }
 
             }
 
             );
 <?php endif; ?>
-        alert(window.mapСenter.toString());
+        alert(window.mapCenter.toString());
         map = new google.maps.Map(document.getElementById("map_canvas"),
                 {
                     zoom: <?= $this->context->zoom ?>,
                     mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                    center: window.mapСenter
+                    center: window.mapCenter
                 }
         );
 //        var marker = new google.maps.Marker({
