@@ -18,40 +18,41 @@ class Map extends \yii\base\Widget {
     public $zoom = 4;
     public $mapType = 'ROADMAP';
     public $markers = [];
+    public $apiKey;
 
     public function init() {
-        $api_key = Yii::$app->params['GOOGLE_API_KEY'];
-        $sensor = $this->sensor ? 'true' : 'false';
-        $this->view->registerJs('
-var geocoder, map;            
-function initialize() {
-  geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-        "address": "' . $this->center . '"
-    }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            var myOptions = {
-                zoom: ' . $this->zoom . ',
-                center: results[0].geometry.location,
-                mapTypeId: google.maps.MapTypeId.' . $this->mapType . '
-            }
-            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        $this->apiKey = Yii::$app->params['GOOGLE_API_KEY'];
+        $this->sensor = $this->sensor ? 'true' : 'false';
+        /* $this->view->registerJs('
+          var geocoder, map;
+          function initialize() {
+          geocoder = new google.maps.Geocoder();
+          geocoder.geocode({
+          "address": "' . $this->center . '"
+          }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+          var myOptions = {
+          zoom: ' . $this->zoom . ',
+          center: results[0].geometry.location,
+          mapTypeId: google.maps.MapTypeId.' . $this->mapType . '
+          }
+          map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-        }
-    });
-}
-function loadScript() {
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = "https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $sensor . '&callback=initialize";
-  document.body.appendChild(script);
-}
+          var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+          });
+          }
+          });
+          }
+          function loadScript() {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = "https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&sensor=' . $sensor . '&callback=initialize";
+          document.body.appendChild(script);
+          }
 
-window.onload = loadScript;', \yii\web\View::POS_END);
+          window.onload = loadScript;', \yii\web\View::POS_END); */
         parent::init();
     }
 
