@@ -19,7 +19,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    mapOptions['center'] = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
+                    mapOptions['center'] = new google.maps.LatLng(0, 0);
                 } else {
                     mapOptions['center'] = new google.maps.LatLng(0, 0);
                 }
