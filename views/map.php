@@ -2,12 +2,14 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <script>
-    var geocoder, map_center, map;
+    var geocoder,
+            map_center,
+            map;
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
 <?php if (is_array($this->context->center)): ?>
-            map_center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
+            window.map_center = new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>);
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
