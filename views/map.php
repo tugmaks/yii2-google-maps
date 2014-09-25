@@ -38,7 +38,7 @@
         document.body.appendChild(script);
     }
     function setMapCenter(center) {
-        alert('set');
+        alert(center.toString());
         window.mapCenter = center;
     }
     window.onload = loadScript;
