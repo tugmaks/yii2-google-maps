@@ -3,24 +3,31 @@
 </div>
 <script>
     var geocoder, map;
+    geocoder = new google.maps.Geocoder();
     function initialize() {
-        geocoder = new google.maps.Geocoder();
-        geocoder.geocode({
-            "address": "<?= $this->context->center ?>"
-        }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var myOptions = {
-                    zoom: ' . $this->zoom . ',
-                    center: results[0].geometry.location,
-                    mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>
+        var mapOptions = {
+            zoom: <?= $this->context->zoom ?>,
+            mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>
+        }
+<?php if (is_array($this->context->center)): ?>
+            mapOptions.center = [<?= $this->context->center[0] ?>, $this - > context - > center[1]];
+<?php else: ?>
+            geocoder.geocode({
+                "address": "<?= $this->context->center ?>"
+            }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    myOptions.center = results[0].geometry.location,
                 }
-                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                }
+            });
+<?php endif; ?>
 
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            }
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
         });
     }
     function loadScript() {
