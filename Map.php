@@ -9,7 +9,7 @@ class Map extends \yii\base\Widget {
     public $sensor = false;
     public $width = 600;
     public $height = 600;
-    public $address = 'г. Казань, ул. Г. Камала, д.41';
+    public $address = 'г. Москва, ул. Г. Королёва, д.12';
     public $zoom=4;
 
     public function init() {
