@@ -19,7 +19,7 @@
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     alert(results[0].geometry.location.toString());
-                    mapOptions[center] = results[0].geometry.location;
+                    mapOptions['center'] = results[0].geometry.location;
                 }
 
             }
