@@ -18,8 +18,10 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                     myOptions.center = results[0].geometry.location,
                 }
-                }
-            });
+
+            }
+
+            );
 <?php endif; ?>
 
 
