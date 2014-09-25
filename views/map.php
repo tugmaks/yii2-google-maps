@@ -36,7 +36,7 @@
     function loadScript() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=' . <?= $this->context->apiKey ?> . '&sensor=' . <?= $this->context->sensor ?> . '&callback=initialize";
+        script.src = "https://maps.googleapis.com/maps/api/js?key=<?= $this->context->apiKey ?>&sensor=<?= $this->context->sensor ?>&callback=initialize";
         document.body.appendChild(script);
     }
 
