@@ -41,12 +41,41 @@ echo Map::widget([
     'mapType' => Map::MAP_TYPE_SATELLITE,
 ]);
 ```
+
+There are two ways to set API KEY:
+
+1. Add to application parameters.
+
+```php
+config/params.php
+
+return [
+.....
+'GOOGLE_API_KEY' => 'VIza7yBgBzYEbKx09V566DhM8Ylc3NjWsJ0ps-2' // use your own api key
+.....
+]
+```
+
+2. Pass direct to widget. 
+
+```php
+use tugmaks\GoogleMaps\Map;
+
+echo Map::widget([
+    'apiKey'=> 'VIza7yBgBzYEbKx09V566DhM8Ylc3NjWsJ0ps-2',
+    'zoom' => 3,
+    'center' => [20, 40.555],
+    'width' => 700,
+    'height' => 400,
+    'mapType' => Map::MAP_TYPE_HYBRID,
+]);
+
 Parameters
 
 | Name  | Description |
 | ------------- | ------------- |
 | zoom  | integer, not required, default 4 |
-| center  | array or string. If array lat and lng will be used, if string search query will be used. For example: ```php 'center'=>[23.091,100.412] ``` or ```php 'center'=>'London, UK' ``` |
-| width | integer, size in px of div wrapper width |
-| height | integer, size in px of div wrapper height |
-| mapType | string, one of this: MAP_TYPE_ROADMAP, MAP_TYPE_HYBRID, MAP_TYPE_SATELLITE, MAP_TYPE_TERRAIN |
+| center  | array or string, required. If array lat and lng will be used, if string search query will be used. For example: ```php 'center'=>[23.091,100.412] ``` or ```php 'center'=>'London, UK' ``` |
+| width | integer, not required, default 600. Size in px of div wrapper width |
+| height | integer, not required, default 600. Size in px of div wrapper height |
+| mapType | string, not required, default ROADMAP. Available types: MAP_TYPE_ROADMAP, MAP_TYPE_HYBRID, MAP_TYPE_SATELLITE, MAP_TYPE_TERRAIN |
