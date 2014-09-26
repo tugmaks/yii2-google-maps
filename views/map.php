@@ -26,6 +26,7 @@
                 }
             });
 <?php endif; ?>
+
 <?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
     <?php if ($this->context->markerFitBounds): ?>
                 //create empty LatLngBounds object
@@ -50,10 +51,10 @@
                     });
         <?php endif; ?>
         <?php if ($this->context->markerFitBounds): ?>
-                    bounds.extend(marker_<?= $key ?>.position);
+                    bounds.extend(marker_<?= $key ?>);
         <?php endif; ?>
     <?php endforeach; ?>
-    //now fit the map to the newly inclusive bounds
+            //now fit the map to the newly inclusive bounds
             map.fitBounds(bounds);
 <?php endif; ?>
 
