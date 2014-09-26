@@ -16,7 +16,7 @@
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
-            }, function(results, status) {
+            }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map = new google.maps.Map(document.getElementById("map_canvas"), {
                         zoom: <?= $this->context->zoom ?>,
@@ -26,11 +26,16 @@
                 }
             });
 <?php endif; ?>
+<?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
+    <?php foreach ($this->context->markers as $marker): ?>
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(<?= $marker->position[0] ?>, <?= $marker->position[0] ?>
+                });
+    <?php endforeach; ?>
+<?php endif; ?>
 
-//        var marker = new google.maps.Marker({
-//            map: map,
-//            position: results[0].geometry.location
-//        });
+
     }
     function loadScript() {
         var script = document.createElement("script");
