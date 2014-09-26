@@ -15,10 +15,11 @@ class Map extends \yii\base\Widget {
     public $width = 600;
     public $height = 600;
     public $center = 'г. Москва, ул. Г. Королёва, д.12';
-    public $zoom = 4;
+    public $zoom = 16;
     public $mapType = 'ROADMAP';
     public $markers = [];
     public $apiKey = null;
+    public $markerFitBounds = false;
 
     public function init() {
         if ($this->apiKey === null) {
