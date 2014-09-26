@@ -27,6 +27,10 @@
             });
 <?php endif; ?>
 <?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
+    <?php if ($this->context->markerFitBounds): ?>
+                //create empty LatLngBounds object
+                var bounds = new google.maps.LatLngBounds();
+    <?php endif; ?>
     <?php foreach ($this->context->markers as $key => $marker): ?>
         <?php if (is_array($marker['position'])): ?>
                     var marker_<?= $key ?> = new google.maps.Marker({
@@ -45,8 +49,12 @@
                         }
                     });
         <?php endif; ?>
-
+        <?php if ($this->context->markerFitBounds): ?>
+                    bounds.extend(marker_<?= $key ?>.position);
+        <?php endif; ?>
     <?php endforeach; ?>
+    //now fit the map to the newly inclusive bounds
+            map.fitBounds(bounds);
 <?php endif; ?>
 
 
