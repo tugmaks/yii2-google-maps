@@ -44,7 +44,7 @@ echo Map::widget([
 
 There are two ways to set API KEY:
 
-1. Add to application parameters.
+Add to application parameters.
 ```php
 config/params.php
 
@@ -54,7 +54,7 @@ return [
 .....
 ]
 ```
-2. Pass direct to widget. 
+Or pass it direct to widget. 
 
 ```php
 use tugmaks\GoogleMaps\Map;
