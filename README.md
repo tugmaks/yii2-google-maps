@@ -69,6 +69,7 @@ echo Map::widget([
     'height' => 400,
     'mapType' => Map::MAP_TYPE_HYBRID,
 ]);
+```
 
 Parameters
 
