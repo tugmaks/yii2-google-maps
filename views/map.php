@@ -30,7 +30,7 @@
     <?php foreach ($this->context->markers as $marker): ?>
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(<?= $marker->position[0] ?>, <?= $marker->position[1] ?>
+                    position: new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>
                 });
     <?php endforeach; ?>
 <?php endif; ?>
