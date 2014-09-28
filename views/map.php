@@ -38,6 +38,10 @@
                         map: map,
                         position: new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>)
                     });
+            <?php if ($this->context->markerFitBounds): ?>
+                        alert(marker_<?= $key ?>.position.toString());
+                        bounds.extend(marker_<?= $key ?>.position);
+            <?php endif; ?>
         <?php else: ?>
                     geocoder.geocode({
                         "address": "<?= $marker['position'] ?>"
@@ -47,13 +51,14 @@
                                 map: map,
                                 position: results[0].geometry.location
                             });
+            <?php if ($this->context->markerFitBounds): ?>
+                                alert(marker_<?= $key ?>.position.toString());
+                                bounds.extend(marker_<?= $key ?>.position);
+            <?php endif; ?>
                         }
                     });
         <?php endif; ?>
-        <?php if ($this->context->markerFitBounds): ?>
-                    alert(window.marker_<?= $key ?>.position.toString());
-                    bounds.extend(marker_<?= $key ?>.position);
-        <?php endif; ?>
+
     <?php endforeach; ?>
             //now fit the map to the newly inclusive bounds
             map.fitBounds(bounds);
