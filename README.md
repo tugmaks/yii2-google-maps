@@ -113,16 +113,15 @@ Sometimes you need to show all markers on map, but do not know initial map cente
 use tugmaks\GoogleMaps\Map;
 
 echo Map::widget([
-    'center' => [45, 45], // write whatever you want here, but still required
     'width' => 1100,
     'height' => 600,
     'mapType' => Map::MAP_TYPE_HYBRID,
     'markers' => [
-        ['position' => 'Erevan'],
-        ['position' => 'Moscow'],
-        ['position' => 'Ankara'],
-        ['position' => 'Kazan'],
-        ['position' => 'Sofia'],
+        ['position' => 'Belgrad'],
+        ['position' => 'Zagreb'],
+        ['position' => 'Skopje'],
+        ['position' => 'Podgorica'],
+        ['position' => 'Sarajevo'],
     ],
     'markerFitBounds'=>true
 ]);
