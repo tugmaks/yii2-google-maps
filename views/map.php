@@ -16,7 +16,7 @@
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
-            }, function (results, status) {
+            }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map = new google.maps.Map(document.getElementById("map_canvas"), {
                         zoom: <?= $this->context->zoom ?>,
@@ -41,7 +41,7 @@
         <?php else: ?>
                     geocoder.geocode({
                         "address": "<?= $marker['position'] ?>"
-                    }, function (results, status) {
+                    }, function(results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             var marker_<?= $key ?> = new google.maps.Marker({
                                 map: map,
@@ -51,6 +51,7 @@
                     });
         <?php endif; ?>
         <?php if ($this->context->markerFitBounds): ?>
+                    alert(marker_<?= $key ?>.position.toString());
                     bounds.extend(marker_<?= $key ?>.position);
         <?php endif; ?>
     <?php endforeach; ?>
