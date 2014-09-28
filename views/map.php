@@ -40,7 +40,7 @@
                     });
             <?php if ($this->context->markerFitBounds): ?>
                         alert(marker_<?= $key ?>.position.toString());
-                        window.bounds.extend(marker_<?= $key ?>.position);
+                        bounds.extend(marker_<?= $key ?>.position);
             <?php endif; ?>
         <?php else: ?>
                     geocoder.geocode({
@@ -53,7 +53,7 @@
                             });
             <?php if ($this->context->markerFitBounds): ?>
                                 alert(marker_<?= $key ?>.position.toString());
-                                window.bounds.extend(marker_<?= $key ?>.position);
+                                bounds.extend(marker_<?= $key ?>.position);
             <?php endif; ?>
                         }
                     });
