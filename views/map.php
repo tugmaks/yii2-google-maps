@@ -51,7 +51,7 @@
                     });
         <?php endif; ?>
         <?php if ($this->context->markerFitBounds): ?>
-                    bounds.extend(marker_<?= $key ?>);
+                    bounds.extend(marker_<?= $key ?>.position);
         <?php endif; ?>
     <?php endforeach; ?>
             //now fit the map to the newly inclusive bounds
