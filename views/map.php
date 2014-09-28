@@ -35,7 +35,6 @@
                         position: new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>)
                     });
             <?php if ($this->context->markerFitBounds): ?>
-                        marker_<?= $key ?>.setMap(window.map);
                         bounds.extend(marker_<?= $key ?>.position);
                         window.map.fitBounds(bounds);
             <?php endif; ?>
@@ -49,8 +48,6 @@
                                 position: results[0].geometry.location
                             });
             <?php if ($this->context->markerFitBounds): ?>
-
-                                marker_<?= $key ?>.setMap(window.map);
                                 bounds.extend(results[0].geometry.location);
                                 window.map.fitBounds(bounds);
             <?php endif; ?>
