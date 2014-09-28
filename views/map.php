@@ -9,7 +9,7 @@
                 {
                     zoom: <?= $this->context->zoom ?>,
                     mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                    center: new google.maps.LatLng(0, 0);
+                    center: new google.maps.LatLng(0, 0)
                 }
         );
 <?php if (is_array($this->context->center)): ?>
