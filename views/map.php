@@ -3,8 +3,8 @@
 </div>
 <script>
     function initialize() {
-        var geocoder = new google.maps.Geocoder(),
-                map;
+        var geocoder = new google.maps.Geocoder();
+        var map;
 <?php if (is_array($this->context->center)): ?>
             map = new google.maps.Map(document.getElementById("map_canvas"),
                     {
@@ -29,7 +29,6 @@
 
 <?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
     <?php if ($this->context->markerFitBounds): ?>
-                //create empty LatLngBounds object
                 var bounds = new google.maps.LatLngBounds();
     <?php endif; ?>
     <?php foreach ($this->context->markers as $key => $marker): ?>
@@ -58,9 +57,8 @@
                         }
                     });
         <?php endif; ?>
-
     <?php endforeach; ?>
-            //now fit the map to the newly inclusive bounds
+            alert(bounds.toString());
             map.fitBounds(bounds);
 <?php endif; ?>
 
