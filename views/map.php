@@ -2,11 +2,11 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
 <script>
+    var map;
     function initialize() {
         var geocoder = new google.maps.Geocoder();
-        var map;
 <?php if (is_array($this->context->center)): ?>
-            map = new google.maps.Map(document.getElementById("map_canvas"),
+            window.map = new google.maps.Map(document.getElementById("map_canvas"),
                     {
                         zoom: <?= $this->context->zoom ?>,
                         mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
@@ -18,7 +18,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    map = new google.maps.Map(document.getElementById("map_canvas"), {
+                    window.map = new google.maps.Map(document.getElementById("map_canvas"), {
                         zoom: <?= $this->context->zoom ?>,
                         mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
                         center: results[0].geometry.location
@@ -34,13 +34,13 @@
     <?php foreach ($this->context->markers as $key => $marker): ?>
         <?php if (is_array($marker['position'])): ?>
                     var marker_<?= $key ?> = new google.maps.Marker({
-                        map: map,
+                        map: window.map,
                         position: new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>)
                     });
             <?php if ($this->context->markerFitBounds): ?>
                         marker_<?= $key ?>.setMap(map);
-                bounds.extend(marker_<?= $key ?>.position);
-                map.fitBounds(bounds);
+                        bounds.extend(marker_<?= $key ?>.position);
+                        window.map.fitBounds(bounds);
             <?php endif; ?>
         <?php else: ?>
                     geocoder.geocode({
@@ -48,14 +48,14 @@
                     }, function(results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             var marker_<?= $key ?> = new google.maps.Marker({
-                                map: map,
+                                map: window.map,
                                 position: results[0].geometry.location
                             });
             <?php if ($this->context->markerFitBounds): ?>
 
                                 marker_<?= $key ?>.setMap(map);
-                bounds.extend(results[0].geometry.location);
-                map.fitBounds(bounds);
+                                bounds.extend(results[0].geometry.location);
+                                window.map.fitBounds(bounds);
             <?php endif; ?>
                         }
                     });
