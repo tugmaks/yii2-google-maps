@@ -51,7 +51,7 @@
                     });
         <?php endif; ?>
         <?php if ($this->context->markerFitBounds): ?>
-                    alert(marker_<?= $key ?>.position.toString());
+                    alert(window.marker_<?= $key ?>.position.toString());
                     bounds.extend(marker_<?= $key ?>.position);
         <?php endif; ?>
     <?php endforeach; ?>
