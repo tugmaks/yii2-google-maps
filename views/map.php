@@ -23,7 +23,7 @@
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    window.map.setCenter(results[0].geometry.location);
+                    //window.map.setCenter(results[0].geometry.location);
                 }
             });
 <?php endif; ?>
