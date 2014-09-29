@@ -30,7 +30,8 @@
     <?php endif; ?>
     <?php foreach ($this->context->markers as $key => $marker): ?>
                 var marker_<?= $key ?> = new google.maps.Marker({
-                    map: window.map
+                    map: window.map,
+                    position: new google.maps.LatLng(0, 0)
                 });
         <?php if (is_array($marker['position'])): ?>
                     marker_<?= $key ?>.setPosition(new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>));
