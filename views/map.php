@@ -28,11 +28,9 @@
 <?php endif; ?>
 
 <?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
-
     <?php foreach ($this->context->markers as $key => $marker): ?>
                 var marker_<?= $key ?> = new google.maps.Marker({
-                    map: window.map,
-                    position: new google.maps.LatLng(0, 0)
+                    map: window.map
                 });
         <?php if (is_array($marker['position'])): ?>
                     marker_<?= $key ?>.setPosition(new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>));
