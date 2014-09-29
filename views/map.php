@@ -33,7 +33,7 @@
                     map: window.map
                 });
         <?php if (isset($marker['title'])): ?>
-                    marker_<?= $key ?>.setTitle(<?= $marker['title'] ?>);
+                    marker_<?= $key ?>.setTitle("<?= $marker['title'] ?>");
         <?php endif; ?>
         <?php if (is_array($marker['position'])): ?>
                     marker_<?= $key ?>.setPosition(new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>));
