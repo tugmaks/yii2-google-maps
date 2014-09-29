@@ -17,7 +17,7 @@
             window.bounds = new google.maps.LatLngBounds();
 <?php endif; ?>
 <?php if (is_array($this->context->center)): ?>
-            window.map.setCenter(new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>));
+           // window.map.setCenter(new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>));
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
