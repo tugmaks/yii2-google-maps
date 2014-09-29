@@ -17,7 +17,7 @@
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
-            }, function(results, status) {
+            }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     window.map.setCenter(results[0].geometry.location);
                 }
@@ -29,11 +29,11 @@
                 var bounds = new google.maps.LatLngBounds();
     <?php endif; ?>
     <?php foreach ($this->context->markers as $key => $marker): ?>
+                var marker_<?= $key ?> = new google.maps.Marker({
+                    map: window.map
+                });
         <?php if (is_array($marker['position'])): ?>
-                    var marker_<?= $key ?> = new google.maps.Marker({
-                        map: window.map,
-                        position: new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>)
-                    });
+                    marker_<?= $key ?>.setPosition(new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>));
             <?php if ($this->context->markerFitBounds): ?>
                         bounds.extend(marker_<?= $key ?>.position);
                         window.map.fitBounds(bounds);
@@ -41,12 +41,9 @@
         <?php else: ?>
                     geocoder.geocode({
                         "address": "<?= $marker['position'] ?>"
-                    }, function(results, status) {
+                    }, function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
-                            var marker_<?= $key ?> = new google.maps.Marker({
-                                map: window.map,
-                                position: results[0].geometry.location
-                            });
+                            marker_<?= $key ?>.setPosition(results[0].geometry.location));
             <?php if ($this->context->markerFitBounds): ?>
                                 bounds.extend(results[0].geometry.location);
                                 window.map.fitBounds(bounds);
