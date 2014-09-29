@@ -15,15 +15,14 @@
         );
 <?php if ($this->context->markerFitBounds): ?>
             window.bounds = new google.maps.LatLngBounds();
-<?php endif; ?>
-<?php if (is_array($this->context->center)): ?>
-           // window.map.setCenter(new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>));
+<?php elseif (is_array($this->context->center)): ?>
+            window.map.setCenter(new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>));
 <?php else: ?>
             geocoder.geocode({
                 "address": "<?= $this->context->center ?>"
             }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    //window.map.setCenter(results[0].geometry.location);
+                    window.map.setCenter(results[0].geometry.location);
                 }
             });
 <?php endif; ?>
