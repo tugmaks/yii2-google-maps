@@ -3,6 +3,7 @@
 </div>
 <script>
     var map;
+    var bounds;
     function initialize() {
         var geocoder = new google.maps.Geocoder();
         window.map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -12,6 +13,9 @@
                     center: new google.maps.LatLng(0, 0)
                 }
         );
+<?php if ($this->context->markerFitBounds): ?>
+            window.bounds = new google.maps.LatLngBounds();
+<?php endif; ?>
 <?php if (is_array($this->context->center)): ?>
             window.map.setCenter(new google.maps.LatLng(<?= $this->context->center[0] ?>, <?= $this->context->center[1] ?>));
 <?php else: ?>
@@ -25,9 +29,7 @@
 <?php endif; ?>
 
 <?php if (!empty($this->context->markers) && is_array($this->context->markers)): ?>
-    <?php if ($this->context->markerFitBounds): ?>
-                var bounds = new google.maps.LatLngBounds();
-    <?php endif; ?>
+
     <?php foreach ($this->context->markers as $key => $marker): ?>
                 var marker_<?= $key ?> = new google.maps.Marker({
                     map: window.map,
@@ -36,7 +38,7 @@
         <?php if (is_array($marker['position'])): ?>
                     marker_<?= $key ?>.setPosition(new google.maps.LatLng(<?= $marker['position'][0] ?>, <?= $marker['position'][1] ?>));
             <?php if ($this->context->markerFitBounds): ?>
-                        bounds.extend(marker_<?= $key ?>.position);
+                        window.bounds.extend(marker_<?= $key ?>.position);
                         window.map.fitBounds(bounds);
             <?php endif; ?>
         <?php else: ?>
@@ -46,7 +48,7 @@
                         if (status == google.maps.GeocoderStatus.OK) {
                             marker_<?= $key ?>.setPosition(results[0].geometry.location));
             <?php if ($this->context->markerFitBounds): ?>
-                                bounds.extend(results[0].geometry.location);
+                                window.bounds.extend(results[0].geometry.location);
                                 window.map.fitBounds(bounds);
             <?php endif; ?>
                         }
