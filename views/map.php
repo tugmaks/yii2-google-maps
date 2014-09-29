@@ -45,7 +45,7 @@
                         "address": "<?= $marker['position'] ?>"
                     }, function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
-                            marker_<?= $key ?>.setPosition(results[0].geometry.location));
+                            marker_<?= $key ?>.setPosition(results[0].geometry.location);
             <?php if ($this->context->markerFitBounds): ?>
                                 window.bounds.extend(results[0].geometry.location);
                                 window.map.fitBounds(bounds);
