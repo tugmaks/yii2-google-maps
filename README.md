@@ -104,6 +104,16 @@ echo Map::widget([
 ]);
 ````
 
+MARKER OPTIONS
+-----
+
+The following options are allowed: 
+
+| Name  | Description |
+| ------------- | ------------- |
+| position  | string or array, required. If array lat and lng will be used, if string search query will be used. |
+| title  | string, not required. Rollover text |
+
 MARKERS FIT BOUNDS
 -----
 
