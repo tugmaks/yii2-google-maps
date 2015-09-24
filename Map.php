@@ -10,10 +10,19 @@ class Map extends \yii\base\Widget {
     const MAP_TYPE_HYBRID = 'HYBRID';
     const MAP_TYPE_SATELLITE = 'SATELLITE';
     const MAP_TYPE_TERRAIN = 'TERRAIN';
+    const UNITS_PX = 'px';
+    const UNITS_PERCENT = '%';
+    const UNITS_EM = 'em';
+    const UNITS_REM = 'rem';
+    const UNITS_VH = 'vh';
+    const UNITS_VW = 'vw';
+
 
     public $sensor = false;
     public $width = 600;
     public $height = 600;
+    public $widthUnits = self::UNITS_PX;
+    public $heightUnits = self::UNITS_PX;
     public $center = 'г. Москва, ул. Г. Королёва, д.12';
     public $zoom = 16;
     public $mapType = 'ROADMAP';
