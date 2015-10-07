@@ -75,8 +75,10 @@ Parameters
 | ------------- | ------------- |
 | zoom  | integer, not required, default 16 |
 | center  | array or string, required. If array lat and lng will be used, if string search query will be used. For example: ```php 'center'=>[23.091,100.412] ``` or ```php 'center'=>'London, UK' ``` |
-| width | integer, not required, default 600. Size in px of div wrapper width |
-| height | integer, not required, default 600. Size in px of div wrapper height |
+| width | integer, not required, default 600. Size in $widthUnits  default 'px' of div wrapper width |
+| height | integer, not required, default 600. Size in $heightUnits default 'px' of div wrapper height |
+| widthUnits | string, not required, default UNITS_PX. Available types: UNITS_PX, UNITS_PERCENT, UNITS_EM, UNITS_REM, UNITS_VH,UNITS_VW  |
+| heightUnits | string, not required, default UNITS_PX. Available types: UNITS_PX, UNITS_PERCENT, UNITS_EM, UNITS_REM, UNITS_VH,UNITS_VW  |
 | mapType | string, not required, default ROADMAP. Available types: MAP_TYPE_ROADMAP, MAP_TYPE_HYBRID, MAP_TYPE_SATELLITE, MAP_TYPE_TERRAIN |
 | markers | array, not required. Markers that will be added to map|
 
