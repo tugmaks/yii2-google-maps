@@ -1,13 +1,18 @@
-<div style="width: <?= $this->context->width . $this->context->widthUnits?>;
-    height: <?= $this->context->height . $this->context->heightUnits?>">
-    <div id="map_canvas" style="width:100%; height:100%"></div>
+<?php
+$divId = $this->context->mapType == null ? 'map_canvas' : $this->context->mapType;
+?>
+
+<div style="width: <?= $this->context->width . $this->context->widthUnits ?>;
+    height: <?= $this->context->height . $this->context->heightUnits ?>">
+    <div id="<?= $divId ?>"
+         style="width:100%; height:100%"></div>
 </div>
 <script>
     var map;
     var bounds;
     function initialize() {
         var geocoder = new google.maps.Geocoder();
-        window.map = new google.maps.Map(document.getElementById("map_canvas"),
+        window.map = new google.maps.Map(document.getElementById("<?=$divId?>"),
             {
                 zoom: <?= $this->context->zoom ?>,
                 mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
