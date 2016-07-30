@@ -34,6 +34,7 @@ class Map extends \yii\base\Widget
     public $id              = null;
     public $loadAssets      = true;
     public $language        = 'en';
+    public $scrollwheel     = true;
 
     /**
      * DESC

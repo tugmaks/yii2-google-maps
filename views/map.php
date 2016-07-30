@@ -16,7 +16,8 @@ $divId = $this->context->id == null ? 'map_canvas' : $this->context->id;
             {
                 zoom: <?= $this->context->zoom ?>,
                 mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                center: new google.maps.LatLng(0, 0)
+                center: new google.maps.LatLng(0, 0),
+                scrollwheel:<?=($this->context->scrollwheel) ? 'true' : 'false'?>
             }
         );
         <?php if ($this->context->markerFitBounds): ?>
