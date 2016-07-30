@@ -1,5 +1,5 @@
 <?php
-$divId = $this->context->mapType == null ? 'map_canvas' : $this->context->mapType;
+$divId = $this->context->id == null ? 'map_canvas' : $this->context->id;
 ?>
 
 <div style="width: <?= $this->context->width . $this->context->widthUnits ?>;
@@ -10,7 +10,7 @@ $divId = $this->context->mapType == null ? 'map_canvas' : $this->context->mapTyp
 <script>
     var map;
     var bounds;
-    function initialize() {
+    function initialize_<?=md5($divId)?>() {
         var geocoder = new google.maps.Geocoder();
         window.map = new google.maps.Map(document.getElementById("<?=$divId?>"),
             {
@@ -65,12 +65,5 @@ $divId = $this->context->mapType == null ? 'map_canvas' : $this->context->mapTyp
 
 
     }
-    function loadScript() {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=<?= $this->context->apiKey ?>&sensor=<?= $this->context->sensor ?>&callback=initialize";
-        document.body.appendChild(script);
-    }
-    window.onload = loadScript;
 </script>
 

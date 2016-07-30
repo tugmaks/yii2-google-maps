@@ -6,6 +6,7 @@ use Yii;
 
 class Map extends \yii\base\Widget
 {
+    const API_URL = '//maps.googleapis.com/maps/api/js?';
 
     const MAP_TYPE_ROADMAP   = 'ROADMAP';
     const MAP_TYPE_HYBRID    = 'HYBRID';
@@ -31,6 +32,8 @@ class Map extends \yii\base\Widget
     public $apiKey          = null;
     public $markerFitBounds = false;
     public $id              = null;
+    public $loadAssets      = true;
+    public $language        = 'en';
 
     /**
      * DESC
@@ -54,6 +57,15 @@ class Map extends \yii\base\Widget
      */
     public function run()
     {
+        $view = $this->getView();
+
+        $view->registerJsFile(self::API_URL . http_build_query([
+                'sensor'   => $this->sensor ? 'true' : 'false',
+                'language' => $this->language,
+                'key'      => $this->apiKey,
+                'callback' => 'initialize_' . md5($this->id),
+            ]), ['position' => $view::POS_END]);
+
         return $this->render('map');
     }
 
