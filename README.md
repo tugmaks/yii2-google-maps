@@ -39,6 +39,7 @@ echo Map::widget([
     'width' => 700,
     'height' => 400,
     'mapType' => Map::MAP_TYPE_SATELLITE,
+    'id'=>'myMap' //unset it or set value to null to use the default ID 'map_canvas'
 ]);
 ```
 

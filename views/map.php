@@ -1,17 +1,23 @@
-<div style="width: <?= $this->context->width . $this->context->widthUnits?>;
-    height: <?= $this->context->height . $this->context->heightUnits?>">
-    <div id="map_canvas" style="width:100%; height:100%"></div>
+<?php
+$divId = $this->context->id == null ? 'map_canvas' : $this->context->id;
+?>
+
+<div style="width: <?= $this->context->width . $this->context->widthUnits ?>;
+    height: <?= $this->context->height . $this->context->heightUnits ?>">
+    <div id="<?= $divId ?>"
+         style="width:100%; height:100%"></div>
 </div>
 <script>
     var map;
     var bounds;
-    function initialize() {
+    function initialize_<?=md5($divId)?>() {
         var geocoder = new google.maps.Geocoder();
-        window.map = new google.maps.Map(document.getElementById("map_canvas"),
+        window.map = new google.maps.Map(document.getElementById("<?=$divId?>"),
             {
                 zoom: <?= $this->context->zoom ?>,
                 mapTypeId: google.maps.MapTypeId.<?= $this->context->mapType ?>,
-                center: new google.maps.LatLng(0, 0)
+                center: new google.maps.LatLng(0, 0),
+                scrollwheel:<?=($this->context->scrollwheel) ? 'true' : 'false'?>
             }
         );
         <?php if ($this->context->markerFitBounds): ?>
@@ -58,14 +64,7 @@
         <?php endforeach; ?>
         <?php endif; ?>
 
+    }
+    google.maps.event.addDomListener(window, 'load', initialize_<?=md5($divId)?>);
 
-    }
-    function loadScript() {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=<?= $this->context->apiKey ?>&sensor=<?= $this->context->sensor ?>&callback=initialize";
-        document.body.appendChild(script);
-    }
-    window.onload = loadScript;
 </script>
-
