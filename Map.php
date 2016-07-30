@@ -64,8 +64,7 @@ class Map extends \yii\base\Widget
                 'sensor'   => $this->sensor ? 'true' : 'false',
                 'language' => $this->language,
                 'key'      => $this->apiKey,
-                'callback' => 'initialize_' . md5($this->id),
-            ]), ['position' => $view::POS_END]);
+            ]), ['position' => $view::POS_HEAD]);
 
         return $this->render('map');
     }

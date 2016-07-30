@@ -64,7 +64,7 @@ $divId = $this->context->id == null ? 'map_canvas' : $this->context->id;
         <?php endforeach; ?>
         <?php endif; ?>
 
-
     }
-</script>
+    google.maps.event.addDomListener(window, 'load', initialize_<?=md5($divId)?>);
 
+</script>
